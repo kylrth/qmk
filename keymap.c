@@ -7,6 +7,8 @@ enum unicode_names {
   ACCENT_DIERESIS,
   CEDILLA,
   VIRGULILLA,
+  GUILLEMET_OPEN,
+  GUILLEMET_CLOSE,
 };
 
 // Note that these are the combining diacritic marks, which some programs have a hard time with. If
@@ -19,6 +21,8 @@ const uint32_t PROGMEM unicode_map[] = {
   [ACCENT_DIERESIS] = 0x0308,
   [CEDILLA] = 0x0327,
   [VIRGULILLA] = 0x0303,
+  [GUILLEMET_OPEN] = 0x00AB,
+  [GUILLEMET_CLOSE] = 0x00BB,
 };
 
 enum layer_number {
@@ -77,7 +81,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,-----------------------------------------.                    ,-----------------------------------------.
  * |      | Mute |VolDn |VolUp |BriDn |BriUp |                    |      |      |      |      |      |      |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |      |   o̧ |   õ  |   ö  |      |      |                    |      |      |      |      |      |      |
+ * |      |   o̧ |   õ  |   ö  |      |      |                    |   «  |   »  |      |      |      |      |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
  * |      |   ò  |   ô  |   ó  |      |      |-------.    ,-------|      |      |      |      |      |      |
  * |------+------+------+------+------+------| Enter |    |  Del  |------+------+------+------+------+------|
@@ -90,7 +94,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_RAISE] = LAYOUT(
   _______, KC_MUTE, KC_VOLD, KC_VOLU, KC_BRID, KC_BRIU,                              _______, _______, _______, _______, _______, _______,
- _______,X(CEDILLA),X(VIRGULILLA),X(ACCENT_DIERESIS),_______,_______,                  _______, _______, _______, _______, _______, _______,
+ _______,X(CEDILLA),X(VIRGULILLA),X(ACCENT_DIERESIS),_______,_______,                X(GUILLEMET_OPEN), X(GUILLEMET_CLOSE),_______,_______,_______,_______,
  _______,X(ACCENT_GRAVE),X(ACCENT_CIRCUMFLEX),X(ACCENT_ACUTE),_______,_______,       _______, _______, _______, _______, _______, _______,
   _______, _______, _______, _______, _______, _______,  _______, _______,  _______, _______, _______, _______, _______, _______,
                              _______, _______, _______,  _______, _______,  _______, _______, _______
