@@ -1,5 +1,26 @@
 #include QMK_KEYBOARD_H
 
+enum unicode_names {
+  ACCENT_ACUTE,
+  ACCENT_GRAVE,
+  ACCENT_CIRCUMFLEX,
+  ACCENT_DIERESIS,
+  CEDILLA,
+  VIRGULILLA,
+};
+
+// Note that these are the combining diacritic marks, which some programs have a hard time with. If
+// I run into issues over time I'll look at creating a keymap that works with an international
+// layout.
+const uint32_t PROGMEM unicode_map[] = {
+  [ACCENT_ACUTE] = 0x0301,
+  [ACCENT_GRAVE] = 0x0300,
+  [ACCENT_CIRCUMFLEX] = 0x0302,
+  [ACCENT_DIERESIS] = 0x0308,
+  [CEDILLA] = 0x0327,
+  [VIRGULILLA] = 0x0303,
+};
+
 enum layer_number {
   _QWERTY = 0,
   _LOWER,
@@ -56,9 +77,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,-----------------------------------------.                    ,-----------------------------------------.
  * |      | Mute |VolDn |VolUp |BriDn |BriUp |                    |      |      |      |      |      |      |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |      |      |      |      |      |      |                    |      |      |      |      |      |      |
+ * |      |   o̧ |   õ  |   ö  |      |      |                    |      |      |      |      |      |      |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |      |      |      |      |      |      |-------.    ,-------|      |      |      |      |      |      |
+ * |      |   ò  |   ô  |   ó  |      |      |-------.    ,-------|      |      |      |      |      |      |
  * |------+------+------+------+------+------| Enter |    |  Del  |------+------+------+------+------+------|
  * |      |      |      |      |      |      |-------|    |-------|      |      |      |      |      |      |
  * `-----------------------------------------/       /     \      \-----------------------------------------'
@@ -68,9 +89,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 
 [_RAISE] = LAYOUT(
-  _______, KC_MUTE, KC_VOLD, KC_VOLU, KC_BRID, KC_BRIU,                     _______, _______, _______, _______, _______, _______,
-  _______, _______, _______, _______, _______, _______,                     _______, _______, _______, _______, _______, _______,
-  _______, _______, _______, _______, _______, _______,                     _______, _______, _______, _______, _______, _______,
+  _______, KC_MUTE, KC_VOLD, KC_VOLU, KC_BRID, KC_BRIU,                              _______, _______, _______, _______, _______, _______,
+ _______,X(CEDILLA),X(VIRGULILLA),X(ACCENT_DIERESIS),_______,_______,                  _______, _______, _______, _______, _______, _______,
+ _______,X(ACCENT_GRAVE),X(ACCENT_CIRCUMFLEX),X(ACCENT_ACUTE),_______,_______,       _______, _______, _______, _______, _______, _______,
   _______, _______, _______, _______, _______, _______,  _______, _______,  _______, _______, _______, _______, _______, _______,
                              _______, _______, _______,  _______, _______,  _______, _______, _______
 ),
