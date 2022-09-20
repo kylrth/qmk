@@ -1,28 +1,32 @@
 #include QMK_KEYBOARD_H
 
 enum unicode_names {
-  ACCENT_ACUTE,
-  ACCENT_GRAVE,
-  ACCENT_CIRCUMFLEX,
-  ACCENT_DIERESIS,
+  ACC_ACUTE,
+  ACC_GRAVE,
+  ACC_CIRCUMFLEX,
+  ACC_DIERESIS,
   CEDILLA,
   VIRGULILLA,
   GUILLEMET_OPEN,
   GUILLEMET_CLOSE,
+  LIG_oe,
+  LIG_OE,
 };
 
 // Note that these are the combining diacritic marks, which some programs have a hard time with. If
 // I run into issues over time I'll look at creating a keymap that works with an international
 // layout.
 const uint32_t PROGMEM unicode_map[] = {
-  [ACCENT_ACUTE] = 0x0301,
-  [ACCENT_GRAVE] = 0x0300,
-  [ACCENT_CIRCUMFLEX] = 0x0302,
-  [ACCENT_DIERESIS] = 0x0308,
+  [ACC_ACUTE] = 0x0301,
+  [ACC_GRAVE] = 0x0300,
+  [ACC_CIRCUMFLEX] = 0x0302,
+  [ACC_DIERESIS] = 0x0308,
   [CEDILLA] = 0x0327,
   [VIRGULILLA] = 0x0303,
   [GUILLEMET_OPEN] = 0x00AB,
   [GUILLEMET_CLOSE] = 0x00BB,
+  [LIG_oe] = 0x0153,
+  [LIG_OE] = 0x0152,
 };
 
 enum layer_number {
@@ -93,9 +97,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 
 [_RAISE] = LAYOUT(
-  KC_F1,   KC_F2,     KC_F3,             KC_F4,    KC_F5,   KC_F6,                     KC_F7,           KC_F8,            KC_F9,  KC_F10,  KC_F11, KC_F12,
- _______,X(CEDILLA),X(VIRGULILLA),X(ACCENT_DIERESIS),_______,_______,                X(GUILLEMET_OPEN), X(GUILLEMET_CLOSE),_______,_______,_______,_______,
- _______,X(ACCENT_GRAVE),X(ACCENT_CIRCUMFLEX),X(ACCENT_ACUTE),_______,_______,       _______, _______, _______, _______, _______, _______,
+  KC_F1,   KC_F2,      KC_F3,          KC_F4,    KC_F5,   KC_F6,             KC_F7,           KC_F8,            KC_F9,    KC_F10,          KC_F11,  KC_F12,
+ _______,X(CEDILLA), X(VIRGULILLA), X(ACC_DIERESIS),_______,_______,        X(GUILLEMET_OPEN), X(GUILLEMET_CLOSE),_______,XP(LIG_oe, LIG_OE),_______,_______,
+ _______,X(ACC_GRAVE),X(ACC_CIRCUMFLEX),X(ACC_ACUTE),_______,_______,       _______, _______, _______, _______, _______, _______,
   _______, _______, _______, _______, _______, _______,  _______, _______,  _______, _______, _______, _______, _______, _______,
                              _______, _______, _______,  _______, _______,  _______, _______, _______
 ),
