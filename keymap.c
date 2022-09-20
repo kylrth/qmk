@@ -58,7 +58,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 /* LOWER
  * ,-----------------------------------------.                    ,-----------------------------------------.
- * |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |                    |  F7  |  F8  |  F9  | F10  | F11  | F12  |
+ * |      | Mute |VolDn |VolUp |BriDn |BriUp |                    |      |      |      |      |      |      |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
  * |   `  |   (  |   )  | MsUp |   [  |   ]  |                    |   -  |   =  |  Up  |   {  |   }  |   \  |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
@@ -71,7 +71,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                   `----------------------------'           '------''--------------------'
  */
 [_LOWER] = LAYOUT(
-  KC_F1,   KC_F2,   KC_F3,     KC_F4,    KC_F5,      KC_F6,                     KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,
+  _______, KC_MUTE, KC_VOLD, KC_VOLU,   KC_BRID,    KC_BRIU,                    _______, _______, _______, _______, _______, _______,
   KC_GRV, KC_LPRN, KC_RPRN,   KC_MS_UP,  KC_LBRC,    KC_RBRC,                   KC_MINS, KC_EQL,  KC_UP,   KC_LCBR, KC_RCBR, KC_BSLS,
   _______,_______,KC_MS_LEFT,KC_MS_DOWN,KC_MS_RIGHT,KC_MS_WH_UP,                   KC_HOME, KC_LEFT, KC_DOWN, KC_RGHT, KC_END, KC_PSCR,
   _______, _______, _______,  _______,   _______,  KC_MS_WH_DOWN, _______, _______, XXXXXXX, KC_MS_BTN1, KC_MS_BTN2, KC_MS_WH_LEFT, KC_MS_WH_RIGHT, _______,
@@ -79,7 +79,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 /* RAISE
  * ,-----------------------------------------.                    ,-----------------------------------------.
- * |      | Mute |VolDn |VolUp |BriDn |BriUp |                    |      |      |      |      |      |      |
+ * |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |                    |  F7  |  F8  |  F9  | F10  | F11  | F12  |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
  * |      |   o̧ |   õ  |   ö  |      |      |                    |   «  |   »  |      |      |      |      |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
@@ -93,7 +93,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 
 [_RAISE] = LAYOUT(
-  _______, KC_MUTE, KC_VOLD, KC_VOLU, KC_BRID, KC_BRIU,                              _______, _______, _______, _______, _______, _______,
+  KC_F1,   KC_F2,     KC_F3,             KC_F4,    KC_F5,   KC_F6,                     KC_F7,           KC_F8,            KC_F9,  KC_F10,  KC_F11, KC_F12,
  _______,X(CEDILLA),X(VIRGULILLA),X(ACCENT_DIERESIS),_______,_______,                X(GUILLEMET_OPEN), X(GUILLEMET_CLOSE),_______,_______,_______,_______,
  _______,X(ACCENT_GRAVE),X(ACCENT_CIRCUMFLEX),X(ACCENT_ACUTE),_______,_______,       _______, _______, _______, _______, _______, _______,
   _______, _______, _______, _______, _______, _______,  _______, _______,  _______, _______, _______, _______, _______, _______,
