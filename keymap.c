@@ -1,14 +1,16 @@
 #include QMK_KEYBOARD_H
 
 enum unicode_names {
-  ACC_ACUTE,
-  ACC_GRAVE,
-  ACC_CIRCUMFLEX,
-  ACC_DIERESIS,
-  CEDILLA,
-  VIRGULILLA,
-  GUILLEMET_OPEN,
-  GUILLEMET_CLOSE,
+  ACC_ACUT,
+  ACC_GRAV,
+  ACC_CIRC,
+  ACC_DIER,
+  ced,
+  CED,
+  ene,
+  ENE,
+  GUIL_OPEN,
+  GUIL_CLOSE,
   LIG_oe,
   LIG_OE,
 };
@@ -17,14 +19,16 @@ enum unicode_names {
 // I run into issues over time I'll look at creating a keymap that works with an international
 // layout.
 const uint32_t PROGMEM unicode_map[] = {
-  [ACC_ACUTE] = 0x0301,
-  [ACC_GRAVE] = 0x0300,
-  [ACC_CIRCUMFLEX] = 0x0302,
-  [ACC_DIERESIS] = 0x0308,
-  [CEDILLA] = 0x0327,
-  [VIRGULILLA] = 0x0303,
-  [GUILLEMET_OPEN] = 0x00AB,
-  [GUILLEMET_CLOSE] = 0x00BB,
+  [ACC_ACUT] = 0x0301,
+  [ACC_GRAV] = 0x0300,
+  [ACC_CIRC] = 0x0302,
+  [ACC_DIER] = 0x0308,
+  [ced] = 0x00E7,
+  [CED] = 0x00C7,
+  [ene] = 0x00F1,
+  [ENE] = 0x00D1,
+  [GUIL_OPEN] = 0x00AB,
+  [GUIL_CLOSE] = 0x00BB,
   [LIG_oe] = 0x0153,
   [LIG_OE] = 0x0152,
 };
@@ -85,11 +89,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,-----------------------------------------.                    ,-----------------------------------------.
  * |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |                    |  F7  |  F8  |  F9  | F10  | F11  | F12  |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |      |   o̧ |   õ  |   ö  |      |      |                    |   «  |   »  |      |      |      |      |
+ * |      |      |      |      |   ö  |      |                    |      |      |      |   Œ  |      |      |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |      |   ò  |   ô  |   ó  |      |      |-------.    ,-------|      |      |      |      |      |      |
+ * |      |      |   ò  |   ô  |   ó  |      |-------.    ,-------|      |      |      |      |   «  |   »  |
  * |------+------+------+------+------+------| Enter |    |  Del  |------+------+------+------+------+------|
- * |      |      |      |      |      |      |-------|    |-------|      |      |      |      |      |      |
+ * |      |      |      |   Ç  |      |      |-------|    |-------|   Ñ  |      |      |      |      |      |
  * `-----------------------------------------/       /     \      \-----------------------------------------'
  *                   | LAlt | LGUI |LOWER | /Space  /       \BkSpc \  |RAISE | Home | End  |
  *                   |      |      |      |/       /         \      \ |      |      |      |
@@ -97,10 +101,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 
 [_RAISE] = LAYOUT(
-  KC_F1,   KC_F2,      KC_F3,          KC_F4,    KC_F5,   KC_F6,             KC_F7,           KC_F8,            KC_F9,    KC_F10,          KC_F11,  KC_F12,
- _______,X(CEDILLA), X(VIRGULILLA), X(ACC_DIERESIS),_______,_______,        X(GUILLEMET_OPEN), X(GUILLEMET_CLOSE),_______,XP(LIG_oe, LIG_OE),_______,_______,
- _______,X(ACC_GRAVE),X(ACC_CIRCUMFLEX),X(ACC_ACUTE),_______,_______,       _______, _______, _______, _______, _______, _______,
-  _______, _______, _______, _______, _______, _______,  _______, _______,  _______, _______, _______, _______, _______, _______,
+   KC_F1,   KC_F2,       KC_F3,        KC_F4,       KC_F5,   KC_F6,                    KC_F7,          KC_F8,   KC_F9,             KC_F10,       KC_F11,  KC_F12,
+ _______, _______,     _______,      _______, X(ACC_DIER), _______,                    _______,      _______, _______, XP(LIG_oe, LIG_OE),      _______, _______,
+ _______, _______, X(ACC_GRAV),  X(ACC_CIRC), X(ACC_ACUT), _______,                    _______,      _______, _______,            _______, X(GUIL_OPEN), X(GUIL_CLOSE),
+ _______, _______,     _______, XP(ced, CED),     _______, _______,  _______, _______, XP(ene, ENE), _______, _______,            _______,      _______, _______,
                              _______, _______, _______,  _______, _______,  _______, _______, _______
 ),
 /* ADJUST
